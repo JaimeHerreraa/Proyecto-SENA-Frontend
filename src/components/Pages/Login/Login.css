@@ -1,0 +1,126 @@
+.login-container {
+    margin: 0;
+    padding: 0;
+    background-color:   #F6F8FA  ;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 450px;
+    height: 400px;
+    background-color: #30363D;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.content--header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #F6F8FA;
+    border-radius: 10px;
+}
+
+.header--image {
+    width: 40px;
+    height: 40px;
+}
+
+.header--text {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #F6F8FA;
+}
+
+.text--container {
+    width: 350px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.content--form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form--data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.email-input, .password-input {
+    background-color: #F6F8FA;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    padding: 8px;
+    margin: 8px;
+}
+
+.input-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.input-field {
+    border: none;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    background-color: #F6F8FA;
+}
+
+.input-field:focus, .input-field:active {
+    border: none;
+    outline: none;
+}
+
+.submit-button {
+    width: 60%;
+    border: 2px solid #F6F8FA;
+    background-color: #2EA043  ;
+    font-family: 'Poppins', sans-serif;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.submit-button:hover {
+    transition: all ease 1s;
+    background-color:  #099c24;
+}
+
+.submit-link {
+    color: #fff;
+    text-decoration: none;
+}
