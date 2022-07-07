@@ -1,30 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import HomeHeader from "../HomePage/HomeHeader";
 import HomeFooter from "../HomePage/HomeFooter";
 import LoadingSpin from "../../LoadingSpin/LoadingSpin";
+import useRequestDelay from "../../../hooks/useRequestDelay";
+import { getTasks } from "../../../providers/TaskProvider";
 import "./History.css";
 import HistoryOrderList from "./HistoryOrderList";
 
 function History() {
-  const [loading, setLoading] = useState(true);
+  const { loading, data } = useRequestDelay(getTasks);
 
-  const delay = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  };
-
-  useEffect(() => {
-    delay();
-  }, []);
-  if (loading === true) {
+  if (loading === "loading") {
     return <LoadingSpin />;
   } else {
     return (
       <div className="history--container">
         <HomeHeader />
         <div className="history--content">
-          <HistoryOrderList />
+          <HistoryOrderList data={data} />
         </div>
         <HomeFooter />
       </div>

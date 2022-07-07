@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { HomeContext } from "./HomePage";
 import "./HomePage.css";
 import Card from "./Card";
 
 function CardList() {
+  const { data } = useContext(HomeContext);
+
   return (
     <div className="cards--container">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {data.map((task) => {
+        return <Card key={task.id} {...task} />;
+      })}
     </div>
   );
 }

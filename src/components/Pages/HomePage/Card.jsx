@@ -1,12 +1,15 @@
 import React from "react";
+
 import "./HomePage.css";
 
-function Card() {
+function Card({ first_name, info, last_name, state, task_date }) {
   return (
     <div className="card">
-      <h3 className="name">Herrera Pedido</h3>
+      <h3 className="name">
+        {first_name} {last_name} Pedido
+      </h3>
       <p className="state">
-        <strong>Estado:</strong> Pendiente{" "}
+        <strong>Estado:</strong> {state}{" "}
         <img
           alt="pending icon"
           className="state--icon"
@@ -14,10 +17,10 @@ function Card() {
         />
       </p>
       <p className="date">
-        <strong>Fecha:</strong> 16/06/2022
+        <strong>Fecha:</strong> {task_date}
       </p>
       <p className="description">
-        <strong>Descripcion:</strong> 100 Tarjetas de visita y 2 Estandartes.
+        <strong>Descripcion:</strong> {info}
       </p>
     </div>
   );

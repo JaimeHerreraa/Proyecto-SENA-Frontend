@@ -2,7 +2,7 @@ import React from "react";
 import "./History.css";
 import OrderRow from "./OrderRow";
 
-function HistoryOrderList() {
+function HistoryOrderList({ data }) {
   return (
     <div className="orders--container">
       <div className="history--row">
@@ -12,10 +12,9 @@ function HistoryOrderList() {
         <div className="history--column column-state">Estado</div>
       </div>
 
-      <OrderRow />
-      <OrderRow />
-      <OrderRow />
-      <OrderRow />
+      {data.map((order) => {
+        return <OrderRow key={order.key} {...order} />;
+      })}
     </div>
   );
 }

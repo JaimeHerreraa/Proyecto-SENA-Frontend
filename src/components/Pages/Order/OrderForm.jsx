@@ -1,53 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
+import useFormData from "../../../hooks/useFormData";
 import "./Order.css";
+import { postTask } from "../../../providers/TaskProvider";
+import FormLayout from "./FormLayout";
+import { OrderContent } from "./Order";
 
 function OrderForm() {
+  const {
+    name,
+    lastName,
+    date,
+    value,
+    description,
+    setName,
+    setLastName,
+    setValue,
+    setDate,
+    setDescription,
+  } = useFormData();
+
+  const { setUpdate } = useContext(OrderContent);
+
+  const post = () => {
+    postTask(name, lastName, description, value, date);
+    setUpdate("progress");
+  };
+
   return (
-    <div className="form">
-      <h2 className="form--title">Pedido</h2>
-      <div className="form-group">
-        <div className="input-group">
-          <label className="input-label" htmlFor="name">
-            Nombre
-          </label>
-          <input type="text" id="name" required className="input" />
-        </div>
-        <div className="input-group">
-          <label className="input-label" htmlFor="lastname">
-            Apellido
-          </label>
-          <input type="text" id="lastname" required className="input" />
-        </div>
-      </div>
-      <div className="form-group">
-        <div className="input-group">
-          <label className="input-label" htmlFor="date">
-            Fecha
-          </label>
-          <input type="date" id="date" required className="input" />
-        </div>
-        <div className="input-group">
-          <label className="input-label" htmlFor="value">
-            Valor
-          </label>
-          <input type="number" id="value" required className="input" />
-        </div>
-      </div>
-      <div className="form-group">
-        <div className="input-group">
-          <label className="input-label" htmlFor="description">
-            Descripcion
-          </label>
-          <textarea
-            id="description"
-            rows="4"
-            cols="50"
-            className="text-area"
-          ></textarea>
-        </div>
-      </div>
-      <button className="submit">Agregar</button>
-    </div>
+    <FormLayout
+      setName={setName}
+      setLastName={setLastName}
+      setValue={setValue}
+      setDate={setDate}
+      setDescription={setDescription}
+      post={post}
+    />
   );
 }
 

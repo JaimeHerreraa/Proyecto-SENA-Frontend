@@ -1,33 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext } from "react";
 import "./HomePage.css";
-import HomeHeader from "./HomeHeader";
-import LoadingSpin from "../../LoadingSpin/LoadingSpin";
-import HomeContent from "./HomeContent";
-import HomeFooter from "./HomeFooter";
+import useRequestDelay from "../../../hooks/useRequestDelay";
+import { getPendingTask } from "../../../providers/TaskProvider";
+import HomeLayout from "./HomeLayout";
+
+export const HomeContext = createContext();
 
 function HomePage() {
-  const [loading, setLoading] = useState(true);
+  const { loading, data } = useRequestDelay(getPendingTask);
 
-  const delay = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  };
-
-  useEffect(() => {
-    delay();
-  }, []);
-  if (loading === true) {
-    return <LoadingSpin />;
-  } else {
-    return (
-      <div className="homepage--container">
-        <HomeHeader />
-        <HomeContent />
-        <HomeFooter />
-      </div>
-    );
-  }
+  return (
+    <HomeContext.Provider value={{ loading, data }}>
+      <HomeLayout />
+    </HomeContext.Provider>
+  );
 }
 
 export default HomePage;

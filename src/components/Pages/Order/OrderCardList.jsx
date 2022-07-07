@@ -1,16 +1,12 @@
 import React from "react";
 import "./Order.css";
-import OrderCard from "./OrderCard";
+import ListData from "./ListData";
 
 function OrderCardList() {
   return (
     <div className="cards-container">
       <div className="cards">
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
+        <ListData />
       </div>
     </div>
   );

@@ -1,40 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import EmailInput from "./EmailInput";
 import "./Login.css";
+import PasswordInput from "./PasswordInput";
+import SubmitButton from "./SubmitButton";
 
 function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="content--form">
       <div className="form--data">
-        <div className="email-input">
-          <img
-            alt="email icon"
-            src="./images/email-icon.png"
-            className="input-icon"
-          />
-          <input
-            type="text"
-            placeholder="Ingresa correo electronico"
-            className="input-field"
-          />
-        </div>
-        <div className="password-input">
-          <img
-            alt="password icon"
-            src="./images/locker-icon.png"
-            className="input-icon"
-          />
-          <input
-            type="password"
-            placeholder="Ingresa contraseña"
-            className="input-field"
-          />
-        </div>
-        <button className="submit-button">
-          <Link className="submit-link" to="/homepage">
-            Iniciar Sesion
-          </Link>
-        </button>
+        <EmailInput setEmail={setEmail} />
+        <PasswordInput setPassword={setPassword} />
+        <SubmitButton email={email} password={password} />
       </div>
     </div>
   );

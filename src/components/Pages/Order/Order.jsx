@@ -1,36 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { createContext } from "react";
 import "./Order.css";
-import HomeHeader from "../HomePage/HomeHeader";
-import OrderForm from "./OrderForm";
+import OrderLayout from "./OrderLayout";
 import LoadingSpin from "../../LoadingSpin/LoadingSpin";
-import OrderCardList from "./OrderCardList";
-import HomeFooter from "../HomePage/HomeFooter";
+import useRequestDelay from "../../../hooks/useRequestDelay";
+import { getPendingTask } from "../../../providers/TaskProvider";
+import useUpdate from "../../../hooks/useUpdate";
+
+export const OrderContent = createContext();
 
 function Order() {
-  const [loading, setLoading] = useState(true);
+  const { loading, data, setData } = useRequestDelay(getPendingTask);
+  const { setUpdate, update } = useUpdate();
 
-  const delay = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  };
-
-  useEffect(() => {
-    delay();
-  }, []);
-
-  if (loading === true) {
+  if (loading === "loading") {
     return <LoadingSpin />;
   } else {
     return (
-      <div className="order--container">
-        <HomeHeader />
-        <div className="order--content">
-          <OrderForm />
-          <OrderCardList />
-        </div>
-        <HomeFooter />
-      </div>
+      <OrderContent.Provider value={{ data, setUpdate, update, setData }}>
+        <OrderLayout />
+      </OrderContent.Provider>
     );
   }
 }
