@@ -1,19 +1,35 @@
 import React from "react";
+import { deleteEmployee } from "../../../providers/EmployeeProvider";
 import "./Employee.css";
 
-function EmployeeRow() {
+function EmployeeRow({
+  first_name,
+  last_name,
+  salary,
+  job,
+  phone,
+  id,
+  setUpdate,
+}) {
+  const onDeleteClick = () => {
+    deleteEmployee(id);
+    setUpdate("progress");
+  };
   return (
     <div className="employee-row">
-      <div className="column column-id border-top">1143340797</div>
-      <div className="column border-top">Jaime Herrera</div>
-      <div className="column border-top">Desarrollador</div>
-      <div className="column border-top">2.000.000</div>
+      <div className="column column-id border-top">{id}</div>
+      <div className="column border-top">
+        {first_name} {last_name}
+      </div>
+      <div className="column border-top">{job}</div>
+      <div className="column border-top">{salary}</div>
       <div className="column border-top column-phone">
-        3205750249 &nbsp;
+        {phone} &nbsp;
         <img
           src="./images/x-circle-regular-24.png"
           alt="delete icon"
           className="icon"
+          onClick={onDeleteClick}
         />
       </div>
     </div>

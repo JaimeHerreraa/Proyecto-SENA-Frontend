@@ -2,7 +2,7 @@ import React from "react";
 import CardButtons from "./CardButtons";
 import "./Order.css";
 
-function OrderCard({ last_name, state, task_date, cost, info }) {
+function OrderCard({ last_name, state, task_date, cost, info, id }) {
   return (
     <div className="order--card">
       <h3 className="order-card--title"> {last_name} Pedido</h3>
@@ -23,7 +23,7 @@ function OrderCard({ last_name, state, task_date, cost, info }) {
       <p>
         <strong>Descripcion:</strong> {info}
       </p>
-      <CardButtons />
+      <CardButtons id={id} />
     </div>
   );
 }

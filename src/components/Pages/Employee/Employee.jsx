@@ -1,36 +1,16 @@
-import React, { useState, useEffect } from "react";
-import HomeHeader from "../HomePage/HomeHeader";
-import EmployeeForm from "./EmployeeForm";
-import EmployeeList from "./EmployeeList";
-import HomeFooter from "../HomePage/HomeFooter";
+import React from "react";
 import LoadingSpin from "../../LoadingSpin/LoadingSpin";
+import EmployeeLayout from "./EmployeeLayout";
+import { getEmployee } from "../../../providers/EmployeeProvider";
+import useRequestDelay from "../../../hooks/useRequestDelay";
 import "./Employee.css";
 
 function Employee() {
-  const [loading, setLoading] = useState(true);
-
-  const delay = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  };
-
-  useEffect(() => {
-    delay();
-  }, []);
-  if (loading === true) {
+  const { data, loading, setData } = useRequestDelay(getEmployee);
+  if (loading === "loading") {
     return <LoadingSpin />;
   } else {
-    return (
-      <div className="employee--container">
-        <HomeHeader />
-        <div className="employee--content">
-          <EmployeeForm />
-          <EmployeeList />
-        </div>
-        <HomeFooter />
-      </div>
-    );
+    return <EmployeeLayout data={data} setData={setData} />;
   }
 }
 

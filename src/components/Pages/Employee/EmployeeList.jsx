@@ -1,8 +1,8 @@
 import React from "react";
-import EmployeeRow from "./EmployeeRow";
 import "./Employee.css";
+import ListData from "./ListData";
 
-function EmployeeList() {
+function EmployeeList({ data, setData, update, setUpdate }) {
   return (
     <div className="employee--cards-container">
       <div className="employee--cards">
@@ -13,10 +13,12 @@ function EmployeeList() {
           <div className="column">Salario</div>
           <div className="column column-phone">Telefono</div>
         </div>
-
-        <EmployeeRow />
-        <EmployeeRow />
-        <EmployeeRow />
+        <ListData
+          data={data}
+          setData={setData}
+          update={update}
+          setUpdate={setUpdate}
+        />
       </div>
     </div>
   );
